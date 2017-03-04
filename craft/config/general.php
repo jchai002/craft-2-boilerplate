@@ -10,7 +10,7 @@
 return array(
 
     // Base site URL
-    'siteUrl' => null,
+    'siteUrl' => getenv('CRAFT_SITE_URL'),
 
     // Environment-specific variables (see https://craftcms.com/docs/multi-environment-configs#environment-specific-variables)
     'environmentVariables' => array(),
