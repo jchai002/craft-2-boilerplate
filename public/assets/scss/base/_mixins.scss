@@ -1,0 +1,54 @@
+// helpers
+@mixin bg-img($img, $size: cover, $posX: center, $posY: center, $repeat: no-repeat) {
+  background: url("/assets/images/#{$img}") $posX $posY $repeat;
+  background-size: $size;
+}
+
+@mixin fill-container {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+@mixin absolute-center {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+@mixin bg-cover {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@mixin bg-contain {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+
+@mixin keep-aspect-ratio($x, $y, $width) {
+  position: relative;
+  content: "";
+  width: $width;
+  padding-top: ($y / $x) * $width;
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+  }
+}
+
+@mixin no-show {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}

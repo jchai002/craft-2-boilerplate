@@ -1,0 +1,347 @@
+/*mixin declarations*/
+// size class generators
+@mixin generate-size($lower-bound, $upper-bound, $step) {
+  $i: $lower-bound;
+  @while $i <= $upper-bound {
+    .size-#{$i} {display: block;
+                width: #{$i}% !important;
+                height: #{$i}% !important;}
+    $i: $i + $step
+  }
+}
+
+//padding class generators
+@mixin generate-padding($lower-bound, $upper-bound, $step) {
+  $i: $lower-bound;
+  @while $i <= $upper-bound {
+    .pad-#{$i} {padding: #{$i}px !important;}
+    $i: $i + $step
+  }
+}
+
+@mixin generate-padding-x($lower-bound, $upper-bound, $step) {
+  $i: $lower-bound;
+  @while $i <= $upper-bound {
+    .pad-x-#{$i} {padding-left: #{$i}px !important;padding-right: #{$i}px !important;}
+    $i: $i + $step
+  }
+}
+
+@mixin generate-padding-y($lower-bound, $upper-bound, $step) {
+  $i: $lower-bound;
+  @while $i <= $upper-bound {
+    .pad-y-#{$i} {padding-top: #{$i}px !important;padding-bottom: #{$i}px !important;}
+    $i: $i + $step
+  }
+}
+
+@mixin generate-padding-top($lower-bound, $upper-bound, $step) {
+  $i: $lower-bound;
+  @while $i <= $upper-bound {
+    .pad-t-#{$i} {padding-top: #{$i}px !important;}
+    $i: $i + $step
+  }
+}
+
+@mixin generate-padding-bottom($lower-bound, $upper-bound, $step) {
+  $i: $lower-bound;
+  @while $i <= $upper-bound {
+    .pad-b-#{$i} {padding-bottom: #{$i}px !important;}
+    $i: $i + $step
+  }
+}
+
+@mixin generate-padding-left($lower-bound, $upper-bound, $step) {
+  $i: $lower-bound;
+  @while $i <= $upper-bound {
+    .pad-l-#{$i} {padding-left: #{$i}px !important;}
+    $i: $i + $step
+  }
+}
+
+@mixin generate-padding-right($lower-bound, $upper-bound, $step) {
+  $i: $lower-bound;
+  @while $i <= $upper-bound {
+    .pad-r-#{$i} {padding-right: #{$i}px !important;}
+    $i: $i + $step
+  }
+}
+
+//margin class generators
+@mixin generate-margin($lower-bound, $upper-bound, $step) {
+  $i: $lower-bound;
+  @while $i <= $upper-bound {
+    .mar-#{$i} {margin: #{$i}px !important;}
+    $i: $i + $step
+  }
+}
+
+@mixin generate-margin-x($lower-bound, $upper-bound, $step) {
+  $i: $lower-bound;
+  @while $i <= $upper-bound {
+    .mar-x-#{$i} {margin-left: #{$i}px !important;margin-right: #{$i}px !important;}
+    $i: $i + $step
+  }
+}
+
+@mixin generate-margin-y($lower-bound, $upper-bound, $step) {
+  $i: $lower-bound;
+  @while $i <= $upper-bound {
+    .mar-y-#{$i} {margin-top: #{$i}px !important;margin-bottom: #{$i}px !important;}
+    $i: $i + $step
+  }
+}
+
+@mixin generate-margin-top($lower-bound, $upper-bound, $step) {
+  $i: $lower-bound;
+  @while $i <= $upper-bound {
+    .mar-t-#{$i} {margin-top: #{$i}px !important;}
+    $i: $i + $step
+  }
+}
+
+@mixin generate-margin-bottom($lower-bound, $upper-bound, $step) {
+  $i: $lower-bound;
+  @while $i <= $upper-bound {
+    .mar-b-#{$i} {margin-bottom: #{$i}px !important;}
+    $i: $i + $step
+  }
+}
+
+@mixin generate-margin-left($lower-bound, $upper-bound, $step) {
+  $i: $lower-bound;
+  @while $i <= $upper-bound {
+    .mar-l-#{$i} {margin-left: #{$i}px !important;}
+    $i: $i + $step
+  }
+}
+
+@mixin generate-margin-right($lower-bound, $upper-bound, $step) {
+  $i: $lower-bound;
+  @while $i <= $upper-bound {
+    .mar-r-#{$i} {margin-right: #{$i}px !important;}
+    $i: $i + $step
+  }
+}
+
+/*invoke mixins*/
+
+//padding: arguments are ($lower-bound, $upper-bound, $step)
+@include generate-padding(0,64,4);
+@include generate-padding-x(0,64,4);
+@include generate-padding-y(0,64,4);
+@include generate-padding-top(0,64,4);
+@include generate-padding-bottom(0,64,4);
+@include generate-padding-left(0,64,4);
+@include generate-padding-right(0,64,4);
+
+//margin: arguments are ($lower-bound, $upper-bound, $step)
+@include generate-margin(0,64,4);
+@include generate-margin-x(0,64,4);
+@include generate-margin-y(0,64,4);
+@include generate-margin-top(0,64,4);
+@include generate-margin-bottom(0,64,4);
+@include generate-margin-left(0,64,4);
+@include generate-margin-right(0,64,4);
+
+@include generate-size(0,100,5);
+
+@include media-breakpoint-up(md) {
+  .row {
+    .col-md-3 {
+      max-width: 25%;
+    }
+    .col-md-4 {
+      max-width: 33.33333%;
+    }
+    .col-md-6 {
+      max-width: 50%;
+    }
+    .col-md-8 {
+      max-width: 66.66667%
+    }
+    .col-md-9 {
+      max-width: 75%;
+    }
+    .col-md-12 {
+      max-width: 100%;
+    }
+  }
+}
+/* flex helpers */
+.flex {
+  display: flex;
+}
+.align-content-top {
+  display: flex;
+  align-items: flex-start;
+}
+.align-content-bottom {
+  display: flex;
+  align-items: flex-end;
+}
+.align-content-left {
+  display: flex;
+  justify-content: flex-end;
+}
+.align-content-right {
+  display: flex;
+  justify-content: flex-start;
+}
+.flex-center-center {
+  align-items: center;
+  justify-content: center;
+}
+.flex-center-stretch {
+  align-items: stretch;
+  justify-content: center;
+}
+/*general convenience classes*/
+.no-scroll,.contain {
+  overflow: hidden !important;
+}
+
+.inline {
+  display: inline-block !important;
+}
+
+.block {
+  display: block !important;
+}
+
+.relative {
+  position: relative !important;
+}
+
+.absolute {
+  position: absolute !important;
+}
+
+.clear {
+  clear: both !important;
+}
+
+.no-text-mod {
+  text-transform: none !important;
+}
+
+.uppercase {
+  text-transform: uppercase !important;
+}
+
+.capitalize {
+  text-transform: capitalize !important;
+}
+
+.underline {
+  text-decoration: underline !important;
+}
+
+.no-border {
+  border: none !important;
+}
+
+.flat-link {
+  text-decoration: none !important;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.text-shadow {
+  text-shadow: 3px 3px 5px rgba(0,0,0,0.65);
+}
+.pull-right {
+  display: block;
+  float: right;
+}
+.no-box-shadow {
+  box-shadow: none !important;
+}
+.align-content-top {
+  display: flex;
+  align-items: flex-start;
+}
+.align-content-bottom {
+  display: flex;
+  align-items: flex-end;
+}
+.align-content-left {
+  display: flex;
+  justify-content: flex-end;
+}
+.align-content-right {
+  display: flex;
+  justify-content: flex-start;
+}
+.absolute-right {
+  position: absolute;
+  right: 0px;
+}
+
+.absolute-left {
+  position: absolute;
+  left: 0px;
+}
+
+.absolute-top {
+  position: absolute;
+  top: 0px;
+}
+
+.absolute-bottom {
+  position: absolute;
+  bottom: 0px;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.cover {
+  background-position: center center;
+  background-size: cover;
+}
+.position-left {
+  margin-right: auto;
+}
+.position-right {
+  margin-left: auto;
+}
+.position-center {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.align-center {
+  text-align: center !important;
+}
+
+.align-left {
+  text-align: left !important;
+}
+
+.align-right {
+  text-align: right !important;
+}
+
+.block-center {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.block-left {
+  display: block !important;
+  margin-right: auto !important;
+}
+
+.block-right {
+  display: block !important;
+  margin-left: auto !important;
+}
