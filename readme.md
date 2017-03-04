@@ -1,6 +1,6 @@
 # Craft 2 Boilerplate
 
-## this is a boilerplate setup for craft 2. It comes with the gulp npm module for asset pipelining, phpdotenv composer module for env variable management, and capistrano ruby gem for deployment
+this is a boilerplate setup for craft 2. It comes with the gulp npm module for asset pipelining, phpdotenv composer module for env variable management, and capistrano ruby gem for deployment
 
 ### using gulp to compile assets
 
