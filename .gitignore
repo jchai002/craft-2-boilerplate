@@ -1,4 +1,6 @@
 /vendor
 /log
 /node_modules
+craft/storage
+craft/config/license.key
 .env
