@@ -12,6 +12,9 @@ return array(
     // Base site URL
     'siteUrl' => getenv('CRAFT_SITE_URL'),
 
+    // Replace Database Values
+    'siteName' => getenv('CRAFT_SITE_NAME'),
+
     // Environment-specific variables (see https://craftcms.com/docs/multi-environment-configs#environment-specific-variables)
     'environmentVariables' => array(),
 
