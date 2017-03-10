@@ -9,7 +9,7 @@ server "52.32.100.38", user: "deploy", roles: %w{app db web}
 # server "db.example.com", user: "deploy", roles: %w{db}
 
 set :branch, :master
-
+set :deploy_to, "/var/www/#{fetch(:application)}_production"
 
 # role-based syntax
 # ==================
