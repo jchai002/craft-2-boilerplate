@@ -16,7 +16,9 @@ return array(
     'siteName' => getenv('CRAFT_SITE_NAME'),
 
     // Environment-specific variables (see https://craftcms.com/docs/multi-environment-configs#environment-specific-variables)
-    'environmentVariables' => array(),
+    'environmentVariables' => array(
+      'assetsBaseUrl' => getenv('CRAFT_SITE_URL') . '/assets'
+    ),
 
     // Default Week Start Day (0 = Sunday, 1 = Monday...)
     'defaultWeekStartDay' => 0,
