@@ -17,7 +17,8 @@ return array(
 
     // Environment-specific variables (see https://craftcms.com/docs/multi-environment-configs#environment-specific-variables)
     'environmentVariables' => array(
-      'assetsBaseUrl' => getenv('CRAFT_SITE_URL') . '/assets'
+      'assetsBaseUrl' => getenv('CRAFT_SITE_URL') . '/assets',
+      'blockCrawlers' => 1
     ),
 
     // Default Week Start Day (0 = Sunday, 1 = Monday...)

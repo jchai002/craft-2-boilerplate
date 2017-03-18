@@ -15,7 +15,9 @@
 	<meta charset="utf-8" />
 	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
 	<link rel="home" href="{{ siteUrl }}" />
-
+  {% if craft.config.environmentVariables.blockCrawlers is defined and craft.config.environmentVariables.blockCrawlers == 1 %}
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+  {% endif %}
 	<style type="text/css">
 		body { margin: 50px; font-family: sans-serif; background: #fff; }
 		#container { margin: 0 auto; width: 700px;
