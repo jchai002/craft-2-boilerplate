@@ -24,7 +24,7 @@ set :repo_url, "git@git.gooddogdesign.com:gooddog/Craft-2-boilerplate.git"
 append :linked_files, ".env"
 
 # Default value for linked_dirs is []
-append :linked_dirs, "storage"
+append :linked_dirs, "craft/storage"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
