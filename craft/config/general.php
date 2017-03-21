@@ -1,14 +1,14 @@
 <?php
 
 /**
- * General Configuration
- *
- * All of your system's general configuration settings go in here.
- * You can see a list of the default settings in craft/app/etc/config/defaults/general.php
- */
+* General Configuration
+*
+* All of your system's general configuration settings go in here.
+* You can see a list of the default settings in craft/app/etc/config/defaults/general.php
+*/
 
 return array(
-
+  '*' => array(
     // Base site URL
     'siteUrl' => getenv('CRAFT_SITE_URL'),
 
@@ -18,7 +18,8 @@ return array(
     // Environment-specific variables (see https://craftcms.com/docs/multi-environment-configs#environment-specific-variables)
     'environmentVariables' => array(
       'assetsBaseUrl' => getenv('CRAFT_SITE_URL') . '/assets',
-      'blockCrawlers' => 1
+      'blockCrawlers' => 1,
+      'isStaging' => 1
     ),
 
     // Default Week Start Day (0 = Sunday, 1 = Monday...)
@@ -33,7 +34,7 @@ return array(
     // Control Panel trigger word
     'cpTrigger' => 'admin',
 
-	// Dev Mode (see https://craftcms.com/support/dev-mode)
-	'devMode' => false,
-
-);
+    // Dev Mode (see https://craftcms.com/support/dev-mode)
+    'devMode' => true,
+    )
+  );
