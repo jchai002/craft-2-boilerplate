@@ -2,6 +2,10 @@
 /vendor
 /log
 /node_modules
-craft/storage
 craft/config/license.key
 .env
+dump.sql
+
+craft/storage/runtime/
+craft/storage/backups/
+craft/storage/userphotos/
