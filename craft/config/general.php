@@ -7,17 +7,19 @@
 * You can see a list of the default settings in craft/app/etc/config/defaults/general.php
 */
 
+define('URI_SCHEME',  ( isset($_SERVER['HTTPS'] ) ) ? "https://" : "http://" );
+
 return array(
   '*' => array(
     // Base site URL
-    'siteUrl' => getenv('CRAFT_SITE_URL'),
+    'siteUrl' => URI_SCHEME . getenv('CRAFT_SITE_URL'),
 
     // Replace Database Values
     'siteName' => getenv('CRAFT_SITE_NAME'),
 
     // Environment-specific variables (see https://craftcms.com/docs/multi-environment-configs#environment-specific-variables)
     'environmentVariables' => array(
-      'assetsBaseUrl' => getenv('CRAFT_SITE_URL') . '/assets',
+      'assetsBaseUrl' => URI_SCHEME . getenv('CRAFT_SITE_URL') . '/assets',
       'blockCrawlers' => 1,
       'isStaging' => 1
     ),
@@ -33,6 +35,9 @@ return array(
 
     // Control Panel trigger word
     'cpTrigger' => 'admin',
+
+    // Set an unique string to identify the app, prevents users from getting logged out after a capistrano deploy
+    'appId' => 'your-string-here',
 
     // Dev Mode (see https://craftcms.com/support/dev-mode)
     'devMode' => true,
