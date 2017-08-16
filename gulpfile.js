@@ -9,10 +9,10 @@ var gulp         = require('gulp'),
     rename       = require('gulp-rename'),
     size         = require('gulp-size');
 
-var scssSource = 'public/assets/scss/';
+var scssSource = 'src/styles/';
 var cssDest = 'public/assets/css/';
-var jsSource = 'public/assets/js/source/';
-var jsDest = 'public/assets/js/dest/';
+var jsSource = 'src/scripts/';
+var jsDest = 'public/assets/js/';
 
 gulp.task('build-css', function() {
   console.log('buidling css..')
@@ -31,11 +31,10 @@ gulp.task('build-css', function() {
 
 gulp.task('build-js', function() {
   gulp.src([
-    jsSource+'jQuery/*',
+    jsSource+'core/jquery-3.0.0.js',
     jsSource+'core/tether.min.js',
     jsSource+'core/bootstrap.min.js',
-    jsSource+'plugin/**/*',
-    jsSource+'custom/**/*'
+    jsSource+'vendor/**/*'
   ])
   .pipe(concat('main.js'))
   .pipe(gulp.dest(jsDest))
