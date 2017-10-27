@@ -1,23 +1,23 @@
-var gulp = require('gulp'),
-	sass = require('gulp-sass'),
-	bulkSass = require('gulp-sass-bulk-import'),
-	sourcemaps = require('gulp-sourcemaps'),
-	autoprefixer = require('gulp-autoprefixer'),
-	cleanCss = require('gulp-clean-css'),
-	uglify = require('gulp-uglify'),
-	concat = require('gulp-concat'),
-	rename = require('gulp-rename'),
-	size = require('gulp-size');
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const babel = require('gulp-babel');
+const sourcemaps = require('gulp-sourcemaps');
+const autoprefixer = require('gulp-autoprefixer');
+const uglify = require('gulp-uglify');
+const minify = require('gulp-minify-css');
+const concat = require('gulp-concat');
+const rename = require('gulp-rename');
+const size = require('gulp-size');
 
-var scssSource = '_src/styles/';
-var cssDest = 'public/assets/css/';
-var jsSource = '_src/scripts/';
-var jsDest = 'public/assets/js/';
+var stylesSrc = '_src/styles/';
+var stylesDist = 'public/assets/css/';
+var scriptsSrc = '_src/scripts/';
+var scriptsDist = 'public/assets/js/';
 
 gulp.task('build-css', function() {
 	console.log('buidling css..');
 	gulp
-		.src(scssSource + 'manifest.scss')
+		.src(stylesSrc + 'main.scss')
 		.pipe(bulkSass())
 		.pipe(sourcemaps.init())
 		.pipe(sass().on('error', sass.logError))
@@ -26,34 +26,45 @@ gulp.task('build-css', function() {
 				browsers: ['last 25 versions']
 			})
 		)
-		.pipe(cleanCss())
-		.pipe(rename({ suffix: '.min' }))
+		.pipe(minify())
+		.pipe(
+			rename({
+				basename: 'main',
+				suffix: '.min'
+			})
+		)
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(cssDest));
+		.pipe(gulp.dest(stylesDist));
 });
 
 gulp.task('build-js', function() {
 	gulp
 		.src([
-			jsSource + 'core/jquery-3.0.0.js',
-			jsSource + 'core/tether.min.js',
-			jsSource + 'core/bootstrap.min.js',
-			jsSource + 'vendor/**/*',
-			jsSource + 'modules/**/*',
-			jsSource + 'app.js'
+			scriptsSrc + 'core/jquery-2.0.0.js',
+			scriptsSrc + 'core/jquery-easing.min.js',
+			scriptsSrc + 'core/tether.min.js',
+			scriptsSrc + 'core/bootstrap.min.js',
+			scriptsSrc + 'vendor/**/*',
+			scriptsSrc + 'modules/*/**',
+			scriptsSrc + 'app.js'
 		])
 		.pipe(concat('main.js'))
-		.pipe(gulp.dest(jsDest))
+		.pipe(
+			babel({
+				presets: ['env']
+			})
+		)
+		.pipe(gulp.dest(scriptsDist))
 		// create minified version for production use
 		.pipe(uglify())
 		.pipe(rename({ suffix: '.min' }))
-		.pipe(gulp.dest(jsDest))
+		.pipe(gulp.dest(scriptsDist))
 		.pipe(size({ gzip: true, showFiles: true }));
 });
 
 gulp.task('watch', function() {
-	gulp.watch(scssSource + '**/*.scss', ['build-css']);
-	gulp.watch(jsSource + '**/*', ['build-js']);
+	gulp.watch(stylesSrc + '**/*.scss', ['build-css']);
+	gulp.watch(scriptsSrc + '**/*', ['build-js']);
 });
 
 gulp.task('default', ['build-css', 'build-js', 'watch']);
