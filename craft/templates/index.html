@@ -1,9 +1,5 @@
 {% extends "_layout" %}
 
-{% if craft.config.environmentVariables.isStaging is defined and craft.config.environmentVariables.isStaging == 1 %}
-  {% include '_partials/staging_banner' %}
-{% endif %}
-
 {% block content %}
 	<h1>{{ entry.title }}</h1>
 
