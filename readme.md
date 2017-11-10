@@ -2,17 +2,17 @@
 
 This is a boilerplate setup for craft 2. It comes with the gulp npm module for asset pipelining, phpdotenv composer module for env variable management, and capistrano ruby gem for deployment
 
-### using gulp to compile assets
+### using webpack to compile assets
 
 1) cd to project root
 
 2) install all npm dependencies with `npm install`
 
-3) run `gulp` to start compiling sass and javascript
+3) run `npm run build` to start compiling sass and javascript
 
-4) make style edits inside files in the `scss` directory
+4) make style edits inside files in the `_src/styles` directory
 
-5) add new javascript files to /public/assets/js/custom
+5) make js edits inside files in the `_src/scripts` directory
 
 ### using composer and phpdotenv to manage environment variables
 
