@@ -16,6 +16,9 @@ module.exports = {
     filename: "[name]",
     path: path.resolve(__dirname, "public/dist")
   },
+  resolve: {
+    modules: [path.resolve(__dirname, JS_SRC), "node_modules"]
+  },
   module: {
     rules: [
       {

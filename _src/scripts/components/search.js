@@ -1,5 +1,9 @@
-export const search = {
-  init: () => {
-    console.log("search script");
+export class search {
+  constructor() {
+    this.state = {};
   }
-};
+
+  init() {
+    console.log(`Hello from ${this.constructor.name}!`);
+  }
+}
