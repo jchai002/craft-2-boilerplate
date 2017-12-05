@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
-<head>
-	<meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
-	<link rel="home" href="{{ siteUrl }}" />
-  {% if craft.config.environmentVariables.blockCrawlers is defined and craft.config.environmentVariables.blockCrawlers == 1 %}
-      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
-  {% endif %}
-  <!-- custom css -->
-  <link rel="stylesheet" type="text/css" href="{{ siteUrl }}dist/bundle.min.css">
-</head>
 
-<body>
+{% include '_layouts/head' %}
+
+{# set style and javascript scope, defaults to the section handle, but can be over-written on the template level if the variable is set before extending the layout #}
+{% set styleScope = styleScope ?? entry.section.handle %}
+{% set javascriptScope = javascriptScope ?? entry.section.handle %}
+
+<body class="{{ styleScope }}" data-scope="{{ javascriptScope }}">
 	<div class="container">
 		<header id="header">
 			<h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
@@ -35,7 +30,6 @@
 			Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved  •  Built with <a href="http://craftcms.com">Craft</a>
 		</footer>
 	</div>
-
-  {% include '_partials/scripts' %}
+  {% include '_layouts/scripts' %}
 </body>
 </html>

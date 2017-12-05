@@ -1,5 +1,5 @@
 export const search = {
   init: () => {
-    alert("search script");
+    console.log("search script");
   }
 };
