@@ -5,6 +5,7 @@
 npm-debug.log
 craft/config/license.key
 .env
+.env.sh
 dump.sql
 
 craft/storage/runtime/

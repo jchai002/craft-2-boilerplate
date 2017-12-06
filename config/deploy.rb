@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock "3.8.0"
+lock "3.8.2"
 
 set :application, "craft_2_boilerplate"
 set :repo_url, "git@git.gooddogdesign.com:gooddog/Craft-2-boilerplate.git"
