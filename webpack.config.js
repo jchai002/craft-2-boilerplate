@@ -1,20 +1,22 @@
 const path = require("path");
 const webpack = require("webpack");
 const extractTextPlugin = require("extract-text-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 const autoprefixer = require("autoprefixer");
 
 const CSS_SRC = "_src/styles/";
 const JS_SRC = "_src/scripts/";
+const VENDORS = ["jQuery", "bootstrap"];
 
 module.exports = {
+  context: __dirname,
   entry: {
     "bundle.min.css": [path.resolve(__dirname, CSS_SRC + "main.scss")],
-    "bundle.js": [path.resolve(__dirname, JS_SRC + "index.js")],
     "bundle.min.js": [path.resolve(__dirname, JS_SRC + "index.js")]
   },
   output: {
     filename: "[name]",
-    path: path.resolve(__dirname, "public/dist")
+    path: path.resolve(__dirname, "public/assets")
   },
   resolve: {
     modules: [path.resolve(__dirname, JS_SRC), "node_modules"]
@@ -40,7 +42,7 @@ module.exports = {
               loader: "postcss-loader", // postcss loader so we can use autoprefixer
               options: {
                 config: {
-                  path: "postcss.config.js"
+                  path: path.resolve(__dirname, "postcss.config.js")
                 }
               }
             },
@@ -83,11 +85,24 @@ module.exports = {
       Popper: ["popper.js", "default"]
     }),
     new webpack.optimize.UglifyJsPlugin({
+      comments: false, // remove comments
+      compress: {
+        unused: true,
+        dead_code: true, // big one--strip code that will never execute
+        warnings: false, // good for prod apps so users can't peek behind curtain
+        drop_debugger: true,
+        conditionals: true,
+        evaluate: true,
+        drop_console: true, // strips console statements
+        sequences: true,
+        booleans: true
+      }
+    }),
+    new CompressionPlugin({
       include: /\.min\.js$/,
-      minimize: true
+      algorithm: "gzip"
     })
   ],
-  watch: true,
   watchOptions: {
     aggregateTimeout: 300,
     poll: 1000,
